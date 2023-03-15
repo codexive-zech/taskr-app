@@ -1,11 +1,8 @@
 import React from "react";
+import { AppHome } from "./components";
 
 function App() {
-  return (
-    <>
-      <h1>App!</h1>
-    </>
-  );
+  return <AppHome />;
 }
 
 export default App;
