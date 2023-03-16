@@ -10,17 +10,37 @@ interface SingleTodoProps {
 }
 
 const SingleTodo = ({ todo, todoList, setTodoList }: SingleTodoProps) => {
+  const handleTodoDelete = (id: number) => {
+    const removeFromTodoList = todoList.filter((todo) => todo.todoId !== id);
+    setTodoList(removeFromTodoList);
+  };
+
+  const handleTodoDone = (id: number) => {
+    const checkDone = todoList.map((todo) => {
+      if (todo.todoId === id) {
+        return { ...todo, isDone: !todo.isDone };
+      } else {
+        return todo;
+      }
+    });
+    setTodoList(checkDone);
+  };
+
   return (
     <form className="single-todo">
-      <span className="single-todo-text">{todo.todo}</span>
+      {todo.isDone ? (
+        <s className="single-todo-text">{todo.todo}</s>
+      ) : (
+        <span className="single-todo-text">{todo.todo}</span>
+      )}
       <div>
         <span className="icon">
           <AiFillEdit />
         </span>
-        <span className="icon">
+        <span className="icon" onClick={() => handleTodoDelete(todo.todoId)}>
           <AiFillDelete />
         </span>
-        <span className="icon">
+        <span className="icon" onClick={() => handleTodoDone(todo.todoId)}>
           <MdDone />
         </span>
       </div>
