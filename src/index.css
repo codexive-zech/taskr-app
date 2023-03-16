@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
 
 * {
   margin: 0;
@@ -6,9 +6,14 @@
   box-sizing: border-box;
 }
 
-.app-container {
-  width: 100vw;
+body {
+  width: 95vw;
+  margin: 0 auto;
   height: 100vh;
+  background: #2f74c0;
+}
+
+.app-container {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -16,7 +21,6 @@
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;
-  background: #2f74c0;
   font-family: "Neucha" cursive;
 }
 
@@ -85,4 +89,60 @@
   -webkit-transform: scale(0.8);
   transform: scale(0.8);
   box-shadow: 0 0 5px #000;
+}
+
+.todo-list {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  justify-content: space-evenly;
+  width: 90%;
+  flex-wrap: wrap;
+}
+
+.single-todo {
+  display: -webkit-box;
+  display: flex;
+  width: 29.5%;
+  border-radius: 7px;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 20px;
+  background-color: yellow;
+}
+
+.single-todo-text {
+  flex: 1;
+  -webkit-box-flex: 1;
+  font-size: 20px;
+  padding: 5px;
+  border: none;
+}
+
+.single-todo-text:focus {
+  outline: none;
+}
+
+.icon {
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .single-todo {
+    width: 40%;
+  }
+}
+
+@media (max-width: 700px) {
+  .todo-list,
+  .input {
+    width: 95%;
+  }
+
+  .single-todo {
+    width: 90%;
+  }
 }

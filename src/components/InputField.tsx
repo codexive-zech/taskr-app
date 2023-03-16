@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { TodoProps } from "./Todo";
+import { TodoList } from "./index";
 
 const InputField = () => {
   const [todoTask, setTodoTask] = useState<string>("");
@@ -24,19 +25,22 @@ const InputField = () => {
   }, [todoList]);
 
   return (
-    <form className="input" onSubmit={handleAdd}>
-      <input
-        ref={inputRef}
-        type="text"
-        placeholder="Enter Your Task"
-        className="input-box"
-        value={todoTask}
-        onChange={(e) => setTodoTask(e.target.value)}
-      />
-      <button type="submit" className="input-btn">
-        GO
-      </button>
-    </form>
+    <>
+      <form className="input" onSubmit={handleAdd}>
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder="Enter Your Task"
+          className="input-box"
+          value={todoTask}
+          onChange={(e) => setTodoTask(e.target.value)}
+        />
+        <button type="submit" className="input-btn">
+          GO
+        </button>
+      </form>
+      <TodoList todoList={todoList} setTodoList={setTodoList} />
+    </>
   );
 };
 
