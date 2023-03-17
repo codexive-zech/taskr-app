@@ -124,6 +124,15 @@ body {
   outline: none;
 }
 
+.single-todo-text-input {
+  flex: 1;
+  -webkit-box-flex: 1;
+  font-size: 16px;
+  padding: 5px;
+  border: none;
+  width: 50%;
+}
+
 .icon {
   font-size: 20px;
   margin-left: 10px;
