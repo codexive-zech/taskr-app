@@ -12,7 +12,6 @@ interface SingleTodoProps {
 const SingleTodo = ({ todo, todoList, setTodoList }: SingleTodoProps) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [editTodoTask, setEditTodoTask] = useState<string>(todo.todo);
-
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleTodoDelete = (id: number) => {
@@ -32,7 +31,7 @@ const SingleTodo = ({ todo, todoList, setTodoList }: SingleTodoProps) => {
   };
 
   const handleEditTodo = () => {
-    if (!edit && !todo.isDone) {
+    if (edit === false && !todo.isDone) {
       setEdit(!edit);
     }
   };
@@ -65,6 +64,7 @@ const SingleTodo = ({ todo, todoList, setTodoList }: SingleTodoProps) => {
           value={editTodoTask}
           onChange={(e) => setEditTodoTask(e.target.value)}
           className="single-todo-text-input"
+          ref={inputRef}
         />
       ) : todo.isDone ? (
         <s className="single-todo-text">{todo.todo}</s>
