@@ -41,7 +41,7 @@ body {
 }
 
 .input {
-  width: 90%;
+  width: 95%;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -91,25 +91,54 @@ body {
   box-shadow: 0 0 5px #000;
 }
 
+.todo-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: start;
+  align-items: flex-start;
+  margin-top: 10px;
+  width: 95%;
+}
+
+.todo-heading {
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+}
+
 .todo-list {
   display: -webkit-box;
   display: flex;
-  -webkit-box-pack: space-evenly;
-  justify-content: space-evenly;
-  width: 90%;
-  flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  width: 47.5%;
+  border-radius: 5px;
+  padding: 15px;
+  background: rgb(50, 195, 205);
 }
 
 .single-todo {
   display: -webkit-box;
   display: flex;
-  width: 29.5%;
+  width: 95%;
+  margin: 0 auto;
   border-radius: 7px;
   -webkit-box-pack: justify;
   justify-content: space-between;
   margin-top: 15px;
   padding: 20px;
   background-color: yellow;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.single-todo:hover {
+  -webkit-transform: scale(1.03);
+  transform: scale(1.03);
+  box-shadow: 0px 0px 5px #000;
 }
 
 .single-todo-text {
@@ -139,19 +168,30 @@ body {
   cursor: pointer;
 }
 
-@media (max-width: 1200px) {
-  .single-todo {
-    width: 40%;
+@media (max-width: 1100px) {
+  .todo-list {
+    width: 45%;
   }
 }
 
 @media (max-width: 700px) {
-  .todo-list,
   .input {
     width: 95%;
   }
 
-  .single-todo {
-    width: 90%;
+  .todo-list {
+    margin-bottom: 20px;
+    width: 95%;
   }
+
+  .todo-container {
+    width: 95%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+  }
+}
+
+.completed-todo {
+  background-color: rgb(235, 103, 80);
 }
