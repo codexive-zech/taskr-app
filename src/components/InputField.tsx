@@ -14,10 +14,7 @@ const InputField = () => {
     e.preventDefault();
 
     if (todoTask) {
-      setTodoList([
-        ...todoList,
-        { todoId: Date.now(), todo: todoTask, isDone: false },
-      ]);
+      setTodoList([...todoList, { todoId: Date.now(), todo: todoTask }]);
     }
     setTodoTask("");
   };
@@ -50,9 +47,9 @@ const InputField = () => {
     }
 
     if (destination.droppableId === "active-todo") {
-      active.splice(destination.index, 0, { ...add, isDone: false });
+      active.splice(destination.index, 0, { ...add });
     } else {
-      complete.splice(destination.index, 0, { ...add, isDone: false });
+      complete.splice(destination.index, 0, { ...add });
     }
 
     setCompletedTodoList(complete);

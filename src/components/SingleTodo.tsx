@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { TodoProps } from "./Todo";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { AiFillEdit } from "react-icons/ai";
 import { Draggable } from "react-beautiful-dnd";
 
 interface SingleTodoProps {
