@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { TodoProps } from "./Todo";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 import { Draggable } from "react-beautiful-dnd";
 
 interface SingleTodoProps {
@@ -10,7 +10,7 @@ interface SingleTodoProps {
   setTodoList: React.Dispatch<React.SetStateAction<TodoProps[]>>;
 }
 
-const SingleTodo = ({
+const CompleteTodo = ({
   index,
   todo,
   todoList,
@@ -20,10 +20,9 @@ const SingleTodo = ({
   const [editTodoTask, setEditTodoTask] = useState<string>(todo.todo);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleEditTodo = () => {
-    if (edit === false) {
-      setEdit(!edit);
-    }
+  const handleTodoDelete = (id: number) => {
+    const removeFromTodoList = todoList.filter((todo) => todo.todoId !== id);
+    setTodoList(removeFromTodoList);
   };
 
   const handleEditing = (e: React.FormEvent, id: number) => {
@@ -65,8 +64,11 @@ const SingleTodo = ({
             <span className="single-todo-text">{todo.todo}</span>
           )}
           <div>
-            <span className="icon" onClick={handleEditTodo}>
-              <AiFillEdit />
+            <span
+              className="icon"
+              onClick={() => handleTodoDelete(todo.todoId)}
+            >
+              <AiFillDelete />
             </span>
           </div>
         </form>
@@ -75,4 +77,4 @@ const SingleTodo = ({
   );
 };
 
-export default SingleTodo;
+export default CompleteTodo;
