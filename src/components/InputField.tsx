@@ -3,10 +3,33 @@ import { TodoProps } from "./Todo";
 import { TodoList } from "./index";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 
+const getLocalActiveTodoList = () => {
+  const activeTodoList = localStorage.getItem("activeTodoList");
+
+  if (activeTodoList) {
+    return JSON.parse(activeTodoList);
+  } else {
+    return [];
+  }
+};
+
+const getLocalCompleteTodoList = () => {
+  const completeTodoList = localStorage.getItem("completeTodoList");
+  if (completeTodoList) {
+    return JSON.parse(completeTodoList);
+  } else {
+    return [];
+  }
+};
+
 const InputField = () => {
   const [todoTask, setTodoTask] = useState<string>("");
-  const [todoList, setTodoList] = useState<TodoProps[]>([]);
-  const [completedTodoList, setCompletedTodoList] = useState<TodoProps[]>([]);
+  const [todoList, setTodoList] = useState<TodoProps[]>(
+    getLocalActiveTodoList()
+  );
+  const [completedTodoList, setCompletedTodoList] = useState<TodoProps[]>(
+    getLocalCompleteTodoList()
+  );
 
   let inputRef = useRef<HTMLInputElement>(null);
 
@@ -55,6 +78,14 @@ const InputField = () => {
     setCompletedTodoList(complete);
     setTodoList(active);
   };
+
+  useEffect(() => {
+    localStorage.setItem("activeTodoList", JSON.stringify(todoList));
+  }, [todoList]);
+
+  useEffect(() => {
+    localStorage.setItem("completeTodoList", JSON.stringify(completedTodoList));
+  }, [completedTodoList]);
 
   return (
     <>

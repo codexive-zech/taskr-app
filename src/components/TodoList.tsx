@@ -19,13 +19,15 @@ const TodoList = ({
   return (
     <div className="todo-container">
       <Droppable droppableId="active-todo">
-        {(provided) => (
+        {(provided, snapshot) => (
           <div
-            className="todo-list"
+            className={`todo-list ${
+              snapshot.isDraggingOver ? "drag-active" : null
+            }`}
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            <span className="todo-heading">Active Task</span>
+            <span className={`todo-heading`}>Active Task</span>
             {todoList.map((todo, index) => {
               return (
                 <SingleTodo
@@ -44,9 +46,11 @@ const TodoList = ({
 
       {/* Completed Todo Section */}
       <Droppable droppableId="completed-todo">
-        {(provided) => (
+        {(provided, snapshot) => (
           <div
-            className="todo-list completed-todo"
+            className={`todo-list completed-todo ${
+              snapshot.isDraggingOver ? "drag-complete" : null
+            }`}
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
