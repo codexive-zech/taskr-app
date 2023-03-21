@@ -38,7 +38,7 @@ const InputField = () => {
 
     if (todoTask) {
       setTodoList([...todoList, { todoId: Date.now(), todo: todoTask }]);
-    }
+    } // checking if todoTask exist then add prev value and new inputted value
     setTodoTask("");
   };
 
@@ -48,7 +48,6 @@ const InputField = () => {
 
   const handleOnDrag = (results: DropResult) => {
     const { source, destination } = results;
-    console.log(source, destination);
 
     if (!destination) return;
     if (
